@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     # a form such as 192.168.2.x for x being 11, 12 and 13 (three VMs)
     # is likely to work.
 
-    webserver.vm.network "private_network", ip: "192.168.2.11"
+    webserver.vm.network "private_network", ip: "192.168.56.11"
 
      # This following line is only necessary in the CS Labs... but that
     # may well be where markers mark your assignment.
@@ -61,7 +61,7 @@ config.vm.define "dbserver" do |dbserver|
     # above: it is important that no two VMs attempt to use the same
     # IP address on the private_network.
 
-  dbserver.vm.network "private_network", ip: "192.168.2.12"
+  dbserver.vm.network "private_network", ip: "192.168.56.12"
   dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
     
 
