@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
-<head><title>Database test page</title>
+<head><title>Webserver test page</title>
 <style>
 th { text-align: left; }
 
@@ -16,31 +16,14 @@ th, td {
 </head>
 
 <body>
-<h1>Database test page</h1>
+<h1>Webserver test page.</h1>
 
-<p>Showing contents of papers table:</p>
+<p>This page demonstrates that the webserver on your VM is generating content.</p>
 
-<table border="1">
-<tr><th>Paper code</th><th>Paper name</th></tr>
+<p>You likely now want to <a href="test-database.php">proceed to your webserver's
+database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
 
-<?php
- 
-$db_host   = '192.168.56.12';
-$db_name   = 'fvision';
-$db_user   = 'webuser';
-$db_passwd = 'insecure_db_pw';
+<p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
 
-$pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
-
-$pdo = new PDO($pdo_dsn, $db_user, $db_passwd);
-
-$q = $pdo->query("SELECT * FROM products");
-
-while($row = $q->fetch()){
-  echo "<tr><td>".$row["productId"]."</td><td>".$row["description"]."</td></tr>\n";
-}
-
-?>
-</table>
 </body>
 </html>
