@@ -12,3 +12,6 @@
     a2dissite 000-default
       # Reload the webserver configuration, to pick up our changes
     service apache2 reload
+
+    # Restart the webserver, to pick up our configuration changes
+#service apache2 restart

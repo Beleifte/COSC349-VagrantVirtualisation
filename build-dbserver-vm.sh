@@ -19,6 +19,12 @@
 
       apt-get -y install mysql-server
 
+      # On normal VMs MySQL server will now be running, but starting
+# the service explicitly even if it's started causes no warnings.
+# (... and it _is_ necessary for some Docker testing I'm doing)
+#service mysql start
+
+
        # Run some setup commands to get the database ready to use.
       # First create a database.
 
