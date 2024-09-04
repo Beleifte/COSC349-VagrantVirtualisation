@@ -1,17 +1,18 @@
-create table if not exists customer(
+drop table if exists customer;
+create table customer(
 customerId integer auto_increment(1000),
 username varchar(50) unique not null,
 firstName varchar(100),
 surname varchar(100),
 shippingAddress varchar(500) not null,
 emailAddress varchar(250),
-password varchar(50),
+password varchar(50) not null,
 constraint customer_PK primary key(customerId)
 );
  
  
- 
-create table if not exists product(
+ drop table if exists product;
+create table product(
 productId varchar(20),
 name varchar(100) not null,
 description varchar(1000) not null,
