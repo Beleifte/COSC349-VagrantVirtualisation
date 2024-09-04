@@ -35,7 +35,7 @@
        # Grant all permissions to the database user "webuser" regarding
       # the "fvision" database that we just created, above.
 
-      echo "GRANT ALL PRIVILEGES mydatabase.* TO 'admin'@'%' WITH GRANT OPTION" | mysql
+      echo "GRANT ALL PRIVILEGES ON mydatabase.* TO 'admin'@'%' WITH GRANT OPTION" | mysql
       
       # Set the MYSQL_PWD shell variable that the mysql command will
       # try to use as the database password ...
