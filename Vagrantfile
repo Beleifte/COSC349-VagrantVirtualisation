@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
    
 end
 
-config.vm.provider "dbadmin" do |dbadmin|
+config.vm.define "dbadmin" do |dbadmin|
   dbadmin.vm.hostname = "dbadmin"
   dbadmin.vm.network "private_network", ip: "192.168.56.12"
   dbadmin.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]

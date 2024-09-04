@@ -1,6 +1,6 @@
 drop table if exists customer;
 create table customer(
-customerId integer auto_increment(1000),
+customerId integer auto_increment,
 username varchar(50) unique not null,
 firstName varchar(100),
 surname varchar(100),
@@ -17,8 +17,8 @@ productId varchar(20),
 name varchar(100) not null,
 description varchar(1000) not null,
 category varchar(100) not null,
-listPrice numeric(10,2) not null,
-quantityInStock numeric(4,0) not null,
+listPrice decimal(10,2) not null,
+quantityInStock decimal(4,0) not null,
 constraint product_PK primary key(productId)
 );
 

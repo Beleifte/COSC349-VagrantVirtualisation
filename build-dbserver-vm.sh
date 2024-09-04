@@ -34,8 +34,8 @@
       echo "CREATE USER IF NOT EXISTS 'dbserver'@'%' IDENTIFIED BY 'dbserver';" | mysql
        # Grant all permissions to the database user "webuser" regarding
       # the "fvision" database that we just created, above.
-
-      echo "GRANT ALL PRIVILEGES ON mydatabase.* TO 'dbserver'@'%' WITH GRANT OPTION" | mysql
+     echo "GRANT ALL PRIVILEGES ON *.* TO 'dbserver'@'%' WITH GRANT OPTION" | mysql
+      
       
       # Set the MYSQL_PWD shell variable that the mysql command will
       # try to use as the database password ...
