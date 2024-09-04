@@ -1,29 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
-<head><title>Webserver test page</title>
-<style>
-th { text-align: left; }
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>Bernice's Electronics</title>
 
-table, th, td {
-  border: 2px solid grey;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 0.2em;
-}
-</style>
 </head>
+<?php
+// Start the session to access session variables
+session_start();
+
+// Check if the 'customer' session variable is set
+$customer = isset($_SESSION['customer']) ? $_SESSION['customer'] : null;
+?>
+
 
 <body>
-<h1>Webserver test page.</h1>
+  <main>
+   <?php include 'navigation.php'; ?> 
+<h1>Bernice Electronics</h1>
 
-<p>This page demonstrates that the webserver on your VM is generating content.</p>
-
-<p>You likely now want to <a href="test-database.php">proceed to your webserver's
-database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
-
-<p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
-
+<div class="image-container">
+			<img src="images/basket.jpg" alt="Basket">
+			<img src="images/shoppingcart.jpg" alt="Cart">
+			
+			</div>
+<p class="shop"> Your One-Stop shop for Electronic Devices </p>
+</main>
 </body>
 </html>
