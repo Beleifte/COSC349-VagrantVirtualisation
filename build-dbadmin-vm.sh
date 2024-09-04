@@ -31,7 +31,7 @@
       echo "CREATE DATABASE IF NOT EXISTS mydatabase;" | mysql
 
        # Then create a database user "webuser" with the given password.
-      echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin';" | mysql
+      echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin_pw';" | mysql
        # Grant all permissions to the database user "webuser" regarding
       # the "fvision" database that we just created, above.
 
@@ -40,7 +40,7 @@
       # Set the MYSQL_PWD shell variable that the mysql command will
       # try to use as the database password ...
 
-      export MYSQL_PWD='admin'
+      export MYSQL_PWD='admin_pw'
 
        # ... and run all of the SQL within the setup-database.sql file,
       # which is part of the repository containing this Vagrantfile, so you

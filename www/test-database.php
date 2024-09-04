@@ -28,7 +28,7 @@ th, td {
 $db_host   = '192.168.56.12';
 $db_name   = 'mydatabase';
 $db_user   = 'admin';
-$db_passwd = 'admin';
+$db_passwd = 'admin_pw';
 
 $pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
 
