@@ -69,4 +69,12 @@ config.vm.define "dbserver" do |dbserver|
    
   end
 
+  config.vm.provider "dbadmin" do |dbadmin|
+    dbadmin.vm.hostname = "dbadmin"
+    dbadmin.vm.network "private_network", ip: "192.168.56.13"
+    dbadmin.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+    dbadmin.vm.provision "shell", path: "build-dbadmin-vm.sh"
+
+    
+
 end

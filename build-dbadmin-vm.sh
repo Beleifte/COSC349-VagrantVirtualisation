@@ -31,23 +31,23 @@
       echo "CREATE DATABASE IF NOT EXISTS mydatabase;" | mysql
 
        # Then create a database user "webuser" with the given password.
-      echo "CREATE USER IF NOT EXISTS 'webuser'@'%' IDENTIFIED BY 'user_db_pw';" | mysql
+      echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin';" | mysql
        # Grant all permissions to the database user "webuser" regarding
       # the "fvision" database that we just created, above.
 
-      echo "GRANT ALL PRIVILEGES ON mydatbase.* TO 'webuser'@'%'" | mysql
+      echo "GRANT ALL PRIVILEGES mydatabase.* TO 'admin'@'%' WITH GRANT OPTION" | mysql
       
       # Set the MYSQL_PWD shell variable that the mysql command will
       # try to use as the database password ...
 
-      export MYSQL_PWD='user_db_pw'
+      export MYSQL_PWD='admin'
 
        # ... and run all of the SQL within the setup-database.sql file,
       # which is part of the repository containing this Vagrantfile, so you
       # can look at the file on your host. The mysql command specifies both
       # the user to connect as (webuser) and the database to use (fvision).
 
-      cat /vagrant/setup-database.sql | mysql -u webuser mydatabase
+      cat /vagrant/setup-database.sql | mysql -u admin mydatabase
 
        # By default, MySQL only listens for local network requests,
       # i.e., that originate from within the dbserver VM. We need to
