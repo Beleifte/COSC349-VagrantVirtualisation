@@ -1,9 +1,9 @@
 <?php
 session_start();
-$db_host   = '192.168.56.13';
+$db_host   = '192.168.56.12';
 $db_name   = 'mydatabase';
-$db_user   = 'webuser1';
-$db_passwd = 'webuser1_pw';
+$db_user   = 'admin';
+$db_passwd = 'admin_pw';
 
 try {
 
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <?php include 'www/navigation.php'; ?>
+        <?php include '../www/navigation.php'; ?>
 
         <h1>Create an Account</h1>
 

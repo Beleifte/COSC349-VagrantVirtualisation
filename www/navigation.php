@@ -1,6 +1,12 @@
+<?php
+session_start();
+
+// Check if the user is logged in by checking the session variable
+$customer = isset($_SESSION['customer']) ? $_SESSION['customer'] : null;
+?>
 <nav>
-    <a class="nav" href="index.php">Home</a>
-    <a href="view-products.php">Browse Products</a>
+    <a class="nav" href="http://127.0.0.1:8080/index.php">Home</a>
+    <a href="http://127.0.0.1:8080/view-products.php">Browse Products</a>
     <?php if ($customer): ?>
         <p id="customer">Welcome Valued Customer</p>
         <form action="customer-sign-out.php" method="get" id="signoutForm">

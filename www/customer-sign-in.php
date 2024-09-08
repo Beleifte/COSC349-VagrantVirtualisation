@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Set the customer in the session
             $_SESSION['customer'] = $customer;
-            header('Location: view-products.php');
+           header('Location: http://127.0.0.1:8080/view-products.php');
             exit;
         } else {
             $_SESSION['validation'] = "Invalid username or password. Please try again.";
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <?php include 'www/navigation.php'; ?>
+        <?php include '../www/navigation.php'; ?>
 
         <h1>Sign in</h1>
 
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="shop">Please sign in to continue</p>
 
             <form action="customer-sign-in.php" method="POST">
-                <label>Username:</label><input type="text" name="username" value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>"/>
+                <label>Username:</label><input type="text" name="username" />
                 <label>Password:</label><input type="password" name="password"/>
 
                 <button type="submit">Login</button>
