@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="shop">If you don't have an account then you can
             <a class="nav" href="add-customer.php">create one!</a>
         </p>
-        <a class="nav" href="index.php">Home</a>
+        <a class="nav" href="http://127.0.0.1:8080/index.php">Home</a>
     </main>
 </body>
 </html>
