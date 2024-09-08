@@ -6,9 +6,7 @@ $db_user   = 'admin';
 $db_passwd = 'admin_pw';
 
 try {
-
-    
-    
+ 
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_passwd);
     
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
