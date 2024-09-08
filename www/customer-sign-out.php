@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 // Redirect to the homepage
-header('Location: http://127.0.0.1:8080/index.php');
+header('Location: index.php');
 exit;
 ?>

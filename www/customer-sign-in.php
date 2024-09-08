@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Set the customer in the session
             $_SESSION['customer'] = $customer;
-           header('Location: http://127.0.0.1:8080/view-products.php');
+           header('Location: view-products.php');
             exit;
         } else {
             $_SESSION['validation'] = "Invalid username or password. Please try again.";
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <?php include '../www/navigation.php'; ?>
+        <?php include 'navigation.php'; ?>
 
         <h1>Sign in</h1>
 
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="shop">If you don't have an account then you can
             <a class="nav" href="add-customer.php">create one!</a>
         </p>
-        <a class="nav" href="http://127.0.0.1:8080/index.php">Home</a>
+        <a class="nav" href="index.php">Home</a>
     </main>
 </body>
 </html>

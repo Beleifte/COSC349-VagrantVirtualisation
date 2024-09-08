@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <?php include '../www/navigation.php'; ?>
+        <?php include 'navigation.php'; ?>
 
         <h1>Create an Account</h1>
 
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </fieldset>
 
-        <a class="nav" href="http://127.0.0.1:8080/index.php">Home</a>
+        <a class="nav" href="index.php">Home</a>
     </main>
 </body>
 </html>
