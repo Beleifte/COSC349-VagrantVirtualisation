@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     # from this host to the VM through the shared folder mounted in
     # the VM at /vagrant
 
-    webserver.vm.provision "shell", path: "build-webserver-vm.sh"
+    webserver.vm.provision "shell", path: "build-vms-scripts/build-webserver-vm.sh"
    
 end
 
@@ -80,7 +80,7 @@ user_webserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagra
 # from this host to the VM through the shared folder mounted in
 # the VM at /vagrant
 
-user_webserver.vm.provision "shell", path: "build-userwebserver-vm.sh"
+user_webserver.vm.provision "shell", path: "build-vms-scripts/build-userwebserver-vm.sh"
 
 end
 
@@ -88,7 +88,7 @@ config.vm.define "dbadmin" do |dbadmin|
   dbadmin.vm.hostname = "dbadmin"
   dbadmin.vm.network "private_network", ip: "192.168.56.12"
   dbadmin.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
-  dbadmin.vm.provision "shell", path: "build-dbadmin-vm.sh"
+  dbadmin.vm.provision "shell", path: "build-vms-scripts/build-dbadmin-vm.sh"
 
 end
 
@@ -106,7 +106,7 @@ config.vm.define "dbserver" do |dbserver|
   dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
     
 
-  dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
+  dbserver.vm.provision "shell", path: "build-vms-scripts/build-dbserver-vm.sh"
    
   end
 
