@@ -1,81 +1,61 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# A Vagrantfile to set up two VMs, a webserver and a database server,
+# A Vagrantfile to set up three VMs, a webserver and two database servers,
 # connected together using an internal network with manually-assigned
 # IP addresses for the VMs.
 
 Vagrant.configure("2") do |config|
-  # (We have used this box previously, so reusing it here should save a
-  # bit of time by using a cached copy.)
-
+ 
   config.vm.box = "ubuntu/focal64"
  
 
-  # this is a form of configuration not seen earlier in our use of
-  # Vagrant: it defines a particular named VM, which is necessary when
-  # your Vagrantfile will start up multiple interconnected VMs. I have
-  # called this first VM "webserver" since I intend it to run the
-  # webserver (unsurprisingly...).
+ # Defines the webserver VM, which I have named "webserver".
 
   config.vm.define "webserver" do |webserver|
-        # These are options specific to the webserver VM
+    # These are options specific to the webserver VM
     webserver.vm.hostname = "webserver"
 
-     # This type of port forwarding has been discussed elsewhere in
-    # labs, but recall that it means that our host computer can
-    # connect to IP address 127.0.0.1 port 8080, and that network
-    # request will reach our webserver VM's port 80.
+   #Our host computer can connect to IP address 127.0.0.1 port 8080, and that network
+   # request will reach our webserver VM's port 80.
 
     webserver.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+    
     # We set up a private network that our VMs will use to communicate
-    # with each other. Note that I have manually specified an IP
-    # address for our webserver VM to have on this internal network,
-    # too. There are restrictions on what IP addresses will work, but
-    # a form such as 192.168.2.x for x being 11, 12 and 13 (three VMs)
-    # is likely to work.
-
+    # with each other. 
     webserver.vm.network "private_network", ip: "192.168.56.11"
 
-     # This following line is only necessary in the CS Labs... but that
-    # may well be where markers mark your assignment.
-
+    # Necessary to build and run in the CS Labs
     webserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
-     # Now we have a section specifying the shell commands to provision
-    # the webserver VM. Note that the file test-website.conf is copied
-    # from this host to the VM through the shared folder mounted in
-    # the VM at /vagrant
-
+    # Now we have a section specifying the shell commands to provision the webserver VM. 
     webserver.vm.provision "shell", path: "build-vms-scripts/build-webserver-vm.sh"
    
 end
 
+# Here is the section for defining the database server, which I have named "dbadmin".
 config.vm.define "dbadmin" do |dbadmin|
   dbadmin.vm.hostname = "dbadmin"
+
+  # Note that the IP address is different from that of the webserver
   dbadmin.vm.network "private_network", ip: "192.168.56.12"
   dbadmin.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+
+  # Now we have a section specifying the shell commands to provision the dbadmin VM.
   dbadmin.vm.provision "shell", path: "build-vms-scripts/build-dbadmin-vm.sh"
 
 end
 
- # Here is the section for defining the database server, which I have
-  # named "dbserver".
-
+ # Here is the section for defining the database server, which I have named "dbserver".
 config.vm.define "dbserver" do |dbserver|
   dbserver.vm.hostname = "dbserver"
 
-   # Note that the IP address is different from that of the webserver
-    # above: it is important that no two VMs attempt to use the same
-    # IP address on the private_network.
-
+  # Note that the IP address is different from that of the other VMs
   dbserver.vm.network "private_network", ip: "192.168.56.13"
   dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
-    
-
-  dbserver.vm.provision "shell", path: "build-vms-scripts/build-dbserver-vm.sh"
-   
-  end
-
   
+  # Now we have a section specifying the shell commands to provision the dbserver VM.
+  dbserver.vm.provision "shell", path: "build-vms-scripts/build-dbserver-vm.sh"  
+  end 
+
 end

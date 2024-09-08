@@ -6,9 +6,9 @@ $db_user   = 'webuser1';
 $db_passwd = 'webuser1_pw';
 
 try {
-    // Create a new PDO instance
+    
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_passwd);
-    // Set the PDO error mode to exception
+ 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -32,13 +32,12 @@ function getCategories($pdo) {
     return $stmt->fetchAll(PDO::FETCH_COLUMN);
 }
 
-// Get the category from the query parameter
+
 $selectedCategory = $_GET['category'] ?? 'All';
 
 // Get products based on the selected category
 $products = getProductsByCategory($pdo, $selectedCategory);
 
-// Get all categories for the filter
 $categories = getCategories($pdo);
 ?>
 

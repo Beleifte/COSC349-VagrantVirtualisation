@@ -1,3 +1,5 @@
+-- Purpose: Create the database schema and populate it with sample data.
+
 drop table if exists customer;
 create table customer(
 customerId integer auto_increment,

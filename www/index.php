@@ -6,15 +6,6 @@
   <title>Bernice's Electronics</title>
 
 </head>
-<?php
-// Start the session to access session variables
-session_start();
-
-// Check if the 'customer' session variable is set
-$customer = isset($_SESSION['customer']) ? $_SESSION['customer'] : null;
-?>
-
-
 <body>
   <main>
    <?php include 'navigation.php'; ?> 

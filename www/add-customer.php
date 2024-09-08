@@ -8,9 +8,9 @@ $db_passwd = 'admin_pw';
 try {
 
     
-    // Create a new PDO instance
+    
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_passwd);
-    // Set the PDO error mode to exception
+    
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $emailAddress = $_POST['emailAddress'] ?? '';
     $shippingAddress = $_POST['shippingAddress'] ?? '';
 
-    // Validate form data
+    // Check for required fields
     if (empty($username) || empty($password) || empty($emailAddress) || empty($shippingAddress)) {
         $_SESSION['validation'] = "Please fill all required fields.";
         header('Location: add-customer.php');
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Prepare an SQL statement for inserting a new customer
         $stmt = $pdo->prepare("INSERT INTO customer (username, firstName, surname, shippingAddress, emailAddress, password) VALUES (:username, :firstName, :surname, :shippingAddress, :emailAddress, :password)");
 
-        // Bind parameters
+    
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':firstName', $firstName);
         $stmt->bindParam(':surname', $surname);
@@ -45,14 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':emailAddress', $emailAddress);
         $stmt->bindParam(':password', $password);
 
-        // Execute the statement
+        
         $stmt->execute();
 
         // Redirect to index page on success
         header('Location: index.php');
         exit;
     } catch (PDOException $e) {
-        // Handle errors
         $_SESSION['validation'] = "Error: " . $e->getMessage();
         header('Location: add-customer.php');
         exit;
@@ -78,10 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php
             if (isset($_SESSION['validation'])) {
                 echo '<p>' . htmlspecialchars($_SESSION['validation']) . '</p>';
-                unset($_SESSION['validation']); // Clear the message after displaying
+                unset($_SESSION['validation']); 
             }
             ?>
 
+            <!--htmlspecialchars to prevent any sql injections from devious users  -->
             <form action="add-customer.php" method="POST">
                 <label>Username:</label><input type="text" name="username" value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>"/>
                 <label>First Name:</label><input type="text" name="firstName" value="<?php echo htmlspecialchars($_POST['firstName'] ?? ''); ?>"/>

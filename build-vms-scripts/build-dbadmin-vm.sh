@@ -4,9 +4,7 @@
        # We create a shell variable MYSQL_PWD that contains the MySQL root password
       export MYSQL_PWD='mysqlroot_pw'
 
-      # If you run the `apt-get install mysql-server` command
-      # manually, it will prompt you to enter a MySQL root
-      # password. The next two lines set up answers to the questions
+      # The next two lines set up answers to the questions
       # the package installer would otherwise ask ahead of it asking,
       # so our automated provisioning script does not get stopped by
       # the software package management system attempting to ask the
@@ -15,37 +13,30 @@
       echo "mysql-server mysql-server/root_password password $MYSQL_PWD" | debconf-set-selections 
       echo "mysql-server mysql-server/root_password_again password $MYSQL_PWD" | debconf-set-selections
       
-            # Install the MySQL database server.
-
+      # Install the MySQL database server.
       apt-get -y install mysql-server
 
-      # On normal VMs MySQL server will now be running, but starting
-# the service explicitly even if it's started causes no warnings.
-# (... and it _is_ necessary for some Docker testing I'm doing)
-#service mysql start
+      # Does not hurt to start the service explicitly even if it's started.
+      service mysql start
 
 
-       # Run some setup commands to get the database ready to use.
-      # First create a database.
+      # Run some setup commands to get the database ready to use.
+      # First create a database.Only if it does not exist.
 
       echo "CREATE DATABASE IF NOT EXISTS mydatabase;" | mysql
 
-       # Then create a database user "webuser" with the given password.
+      # Then create a database user "admin" with the given password.
       echo "CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY 'admin_pw';" | mysql
-       # Grant all permissions to the database user "webuser" regarding
-      # the "fvision" database that we just created, above.
-
+      
+      # Grant all permissions to the database user "admin" regarding
+      # the "mydatabase" database that we just created, above.
       echo "GRANT ALL PRIVILEGES ON mydatabase.* TO 'admin'@'%'" | mysql
       
       # Set the MYSQL_PWD shell variable that the mysql command will
       # try to use as the database password ...
-
       export MYSQL_PWD='admin_pw'
 
-       # ... and run all of the SQL within the setup-database.sql file,
-      # which is part of the repository containing this Vagrantfile, so you
-      # can look at the file on your host. The mysql command specifies both
-      # the user to connect as (webuser) and the database to use (fvision).
+       # The mysql command specifies both the user to connect as (admin) and the database to use (mydatabase).
 
       cat /vagrant/database/setup-database.sql | mysql -u admin mydatabase
 
@@ -58,11 +49,8 @@
       # configuration file and then to change "127.0.0.1" (meaning
       # local only) to "0.0.0.0" (meaning accept connections from any
       # network interface).
-
-
       sed -i'' -e '/bind-address/s/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
       # We then restart the MySQL server to ensure that it picks up
       # our configuration changes.
-
       service mysql restart

@@ -6,9 +6,9 @@ $db_user   = 'admin';
 $db_passwd = 'admin_pw';
 
 try {
-    // Create a new PDO instance
+ 
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_passwd);
-    // Set the PDO error mode to exception
+    
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Basic validation
+    // Check for required fields
     if (empty($username) || empty($password)) {
         $_SESSION['validation'] = "Username and password are required.";
         header('Location: customer-sign-in.php');
@@ -36,8 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->rowCount() > 0) {
             $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Simulate validation (you would use your validation logic here)
-            // For demonstration, assume validation is successful
 
             // Set the customer in the session
             $_SESSION['customer'] = $customer;
@@ -49,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
     } catch (PDOException $e) {
-        // Handle errors
         $_SESSION['validation'] = "Error: " . $e->getMessage();
         header('Location: customer-sign-in.php');
         exit;
@@ -76,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php
             if (isset($_SESSION['validation'])) {
                 echo '<p>' . htmlspecialchars($_SESSION['validation']) . '</p>';
-                unset($_SESSION['validation']); // Clear the message after displaying
+                unset($_SESSION['validation']); 
             }
             ?>
 
