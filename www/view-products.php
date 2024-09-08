@@ -1,9 +1,9 @@
 <?php
 session_start();
-$db_host   = '192.168.56.12';
+$db_host   = '192.168.56.13';
 $db_name   = 'mydatabase';
-$db_user   = 'admin';
-$db_passwd = 'admin_pw';
+$db_user   = 'webuser1';
+$db_passwd = 'webuser1_pw';
 
 try {
     // Create a new PDO instance
