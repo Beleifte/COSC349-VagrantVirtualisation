@@ -8,7 +8,7 @@
         </form>
         <button type="submit" id="cart">View Cart</button>
     <?php else: ?>
-        <a href="input-www/add-customer.php">Create a new Account</a>
-        <a href="input-www/customer-sign-in.php">Sign in</a>
+        <a href="http://127.0.0.1:8081/add-customer.php">Create a new Account</a>
+        <a href="http://127.0.0.1:8081/customer-sign-in.php">Sign in</a>
     <?php endif; ?>
 </nav>

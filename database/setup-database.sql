@@ -33,15 +33,15 @@ VALUES
 
 INSERT INTO product (productId, name, description, category, listPrice, quantityInStock)
 VALUES
-    ('P1001', 'Wireless Mouse', 'A high-precision wireless mouse with ergonomic design.', 'Electronics', 29.99, 150),
-    ('P1002', 'Bluetooth Headphones', 'Over-ear Bluetooth headphones with noise-cancellation.', 'Electronics', 89.99, 75),
-    ('P1003', '4K Ultra HD Smart TV', '55-inch 4K Ultra HD Smart TV with built-in streaming apps and voice control.', 'Electronics', 499.99, 25),
-    ('P1004', 'Smartphone', 'Latest model smartphone with 128GB storage, 6GB RAM, and advanced camera features.', 'Electronics', 699.99, 50),
-    ('P1005', 'Smartwatch', 'Stylish smartwatch with fitness tracking, notifications, and customizable watch faces.', 'Electronics', 199.99, 100),
-    ('P1006', 'Wireless Keyboard and Mouse Combo', 'Compact wireless keyboard and mouse combo with long battery life and ergonomic design.', 'Electronics', 49.99, 200),
-    ('P1007', 'Portable Bluetooth Speaker', 'Water-resistant portable Bluetooth speaker with 12 hours of battery life and superior sound quality.', 'Electronics', 79.99, 120),
-    ('P1008', 'Digital Camera', 'High-resolution digital camera with 20MP sensor, optical zoom, and Wi-Fi connectivity.', 'Electronics', 299.99, 40),
+    ('P1001', 'Wireless Mouse', 'A high-precision wireless mouse with ergonomic design.', 'Accessories', 29.99, 150),
+    ('P1002', 'Bluetooth Headphones', 'Over-ear Bluetooth headphones with noise-cancellation.', 'Headphones', 89.99, 75),
+    ('P1003', '4K Ultra HD Smart TV', '55-inch 4K Ultra HD Smart TV with built-in streaming apps and voice control.', 'TV', 499.99, 25),
+    ('P1004', 'Smartphone', 'Latest model smartphone with 128GB storage, 6GB RAM, and advanced camera features.', 'Smartphones', 699.99, 50),
+    ('P1005', 'Smartwatch', 'Stylish smartwatch with fitness tracking, notifications, and customizable watch faces.', 'Watches', 199.99, 100),
+    ('P1006', 'Wireless Keyboard and Mouse Combo', 'Compact wireless keyboard and mouse combo with long battery life and ergonomic design.', 'Accessories', 49.99, 200),
+    ('P1007', 'Portable Bluetooth Speaker', 'Water-resistant portable Bluetooth speaker with 12 hours of battery life and superior sound quality.', 'Speaker', 79.99, 120),
+    ('P1008', 'Digital Camera', 'High-resolution digital camera with 20MP sensor, optical zoom, and Wi-Fi connectivity.', 'Camera', 299.99, 40),
     ('P1009', 'External Hard Drive', '1TB external hard drive with USB 3.0 connectivity and backup software.', 'Electronics', 89.99, 60),
     ('P1010', 'Home Security Camera', 'Smart home security camera with motion detection, night vision, and remote access.', 'Electronics', 129.99, 35),
-    ('P1011', 'Gaming Console', 'Next-gen gaming console with 4K support, high-speed SSD, and a library of popular games.', 'Electronics', 399.99, 20),
-    ('P1012', 'Virtual Reality Headset', 'Immersive virtual reality headset with motion controllers and a wide field of view.', 'Electronics', 299.99, 45);
+    ('P1011', 'Gaming Console', 'Next-gen gaming console with 4K support, high-speed SSD, and a library of popular games.', 'Gaming', 399.99, 20),
+    ('P1012', 'Virtual Reality Headset', 'Immersive virtual reality headset with motion controllers and a wide field of view.', 'Gaming', 299.99, 45);
