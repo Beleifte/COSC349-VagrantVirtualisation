@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-        <?php include 'navigation.php'; ?>
+        <?php include 'www/navigation.php'; ?>
 
         <h1>Sign in</h1>
 
