@@ -4,9 +4,9 @@
           
     # Change VM's webserver's configuration to use shared folder.
     # (Look inside test-website.conf for specifics.)
-    cp /vagrant/website.conf /etc/apache2/sites-available/
+    cp /vagrant/input-websites.conf /etc/apache2/sites-available/
     # activate our website configuration ...
-    a2ensite website
+    a2ensite input-websites
 
      # ... and disable the default website provided with Apache
     a2dissite 000-default
