@@ -6,6 +6,12 @@
   <title>Bernice's Electronics</title>
 
 </head>
+
+<?php
+session_start();
+$customer = isset($_SESSION['customer']) ? $_SESSION['customer'] : null;
+?>
+
 <body>
   <main>
    <?php include 'navigation.php'; ?> 
